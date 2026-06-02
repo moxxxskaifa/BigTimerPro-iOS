@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -16,6 +17,7 @@ import com.bigtimer.app.platform.HapticFeedback
 import kotlinx.coroutines.delay
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 fun MainScreen() {
     var minutes by remember { mutableIntStateOf(5) }
     var seconds by remember { mutableIntStateOf(0) }
@@ -39,7 +41,7 @@ fun MainScreen() {
                 // Setting mode
                 Slider(value = minutes.toFloat(), onValueChange = { minutes = it.toInt(); totalSecs = minutes * 60 + seconds },
                        valueRange = 1f..99f, modifier = Modifier.width(300.dp))
-                Text("{minutes} min", color = Color.White.copy(alpha = 0.6f), fontSize = 14.sp)
+                Text("{minutes} min", color = Color.White, fontSize = 14.sp)
                 Spacer(Modifier.height(20.dp))
             }
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
