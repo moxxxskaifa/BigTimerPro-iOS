@@ -32,16 +32,17 @@ fun MainScreen() {
         }
     }
 
+    val pad = { v: Int -> v.toString().padStart(2, '0') }
     Box(Modifier.fillMaxSize().background(Color(0xFF1A1A2E)), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text("%02d:%02d".format(minutes, seconds), fontSize = 96.sp, fontWeight = FontWeight.Bold,
+            Text("${pad(minutes)}:${pad(seconds)}", fontSize = 96.sp, fontWeight = FontWeight.Bold,
                  color = Color.White, textAlign = TextAlign.Center, letterSpacing = 4.sp)
             Spacer(Modifier.height(40.dp))
             if (!isRunning && totalSecs == if (minutes*60+seconds == 0) 0 else 1) {
                 // Setting mode
                 Slider(value = minutes.toFloat(), onValueChange = { minutes = it.toInt(); totalSecs = minutes * 60 + seconds },
                        valueRange = 1f..99f, modifier = Modifier.width(300.dp))
-                Text("{minutes} min", color = Color.White, fontSize = 14.sp)
+                Text("$minutes min", color = Color.White, fontSize = 14.sp)
                 Spacer(Modifier.height(20.dp))
             }
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
