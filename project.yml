@@ -9,7 +9,7 @@ targets:
     sources: [iosApp]
     settings:
       base:
-        INFOPLIST_FILE: iosApp/Info.plist
+        INFOPLIST_FILE: iosApp/iosApp/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.moxxxskaifa.BigTimerPro
     dependencies:
       - framework: composeApp/build/bin/iosArm64/releaseFramework/ComposeApp.framework
